@@ -33,4 +33,7 @@ RUN g++ -o helloworld02 helloworld.cpp
 RUN apt install -y openjdk-11-jdk
 RUN javac helloworld.java
 
+
+## Language Python
+RUN apt install -y python
 CMD [ "./run.sh"]
