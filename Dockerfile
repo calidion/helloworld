@@ -33,7 +33,10 @@ RUN g++ -o helloworld02 helloworld.cpp
 RUN apt install -y openjdk-11-jdk
 RUN javac helloworld.java
 
-
 ## Language Python
 RUN apt install -y python
+
+## Language Node.js
+RUN apt install -y nodejs
+
 CMD [ "./run.sh"]

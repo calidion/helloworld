@@ -14,6 +14,7 @@ function printlang() {
   echo -e "${YELLOW}Running Result: ${END}\n";
   $4
   echo -e "\n"
+  sleep 1
 }
 
 
@@ -24,3 +25,4 @@ printlang "1" "C" "helloworld.c" "./helloworld01"
 printlang "2" "C++" "helloworld.cpp" "./helloworld02"
 printlang "3" "Java" "helloworld.java" "java HelloWorld"
 printlang "4" "Python" "helloworld.py" "python helloworld.py"
+printlang "5" "Javascript" "helloworld.js" "node helloworld.js"
