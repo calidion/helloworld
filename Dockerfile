@@ -11,10 +11,6 @@ RUN apt-get install -y git
 # Clone the source code
 RUN git clone --depth 1 https://github.com/calidion/helloworld.git
 
-
-
-
-
 RUN cd helloworld
 COPY . /src
 WORKDIR /src
@@ -44,8 +40,10 @@ RUN apt install -y nodejs
 ## Language perl
 RUN apt install -y perl
 
-
 ## Language php
 RUN apt install -y php-cli
+
+## Language go
+RUN apt install -y golang-go
 
 CMD [ "./run.sh"]
