@@ -39,4 +39,7 @@ RUN apt install -y python
 ## Language Node.js
 RUN apt install -y nodejs
 
+## Language perl
+RUN apt install -y perl
+
 CMD [ "./run.sh"]
