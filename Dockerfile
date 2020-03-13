@@ -46,4 +46,8 @@ RUN apt install -y php-cli
 ## Language go
 RUN apt install -y golang-go
 
+## Language rust
+RUN apt install -y rustc
+RUN rustc helloworld.rs
+
 CMD [ "./run.sh"]
