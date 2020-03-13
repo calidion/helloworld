@@ -1,6 +1,8 @@
 #Download base image ubuntu 16.04
 FROM ubuntu:18.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+
 # Update Ubuntu Software repository
 RUN apt-get -y update && apt-get install -y && apt autoremove -y
 
@@ -41,5 +43,9 @@ RUN apt install -y nodejs
 
 ## Language perl
 RUN apt install -y perl
+
+
+## Language php
+RUN apt install -y php-cli
 
 CMD [ "./run.sh"]
