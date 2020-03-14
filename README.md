@@ -14,8 +14,13 @@ docker build --rm -f "Dockerfile" -t helloworld:latest "."
 docker run --rm -it  helloworld:latest
 ```
 
+## Pull
+
+```
+docker pull calidion/helloworld
+```
+
 # Demo
 
-![](./images/1.png)
-![](./images/2.png)
+![](./images/helloworld.gif)
 
