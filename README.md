@@ -1,4 +1,4 @@
-# Hello world for all languages
+# Hello world potentially for all languages
 Simple “hello world” collections for programming languages
 
 # Build and Run
