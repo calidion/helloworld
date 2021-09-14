@@ -1,53 +1,49 @@
-#Download base image ubuntu 16.04
+#Download base image ubuntu 18.04
 FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Update Ubuntu Software repository
-RUN apt-get -y update && apt-get install -y && apt autoremove -y
-
-RUN apt-get install -y git
+RUN apt-get -y update && apt-get install -y apt-transport-https
+RUN apt-get install -y git wget
 
 # Clone the source code
-RUN git clone --depth 1 https://github.com/calidion/helloworld.git
+RUN wget https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+RUN dpkg -i packages-microsoft-prod.deb
+RUN rm packages-microsoft-prod.deb
 
-RUN cd helloworld
+# Update Ubuntu Software repository
+RUN apt-get -y update
+RUN apt-get install -y dotnet-sdk-5.0
+
+# Install compilers or interpretors, build source codes
+RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc
+
+RUN apt autoremove -y
+
 COPY . /src
 WORKDIR /src
 RUN chmod +x /src/run.sh
 
-
-# Install compilers or interpretors, build source codes
-
 ## Language C
-RUN apt install -y gcc
 RUN gcc -o helloworld01 helloworld.c
 
 ## Language C++
-RUN apt install -y g++
 RUN g++ -o helloworld02 helloworld.cpp
 
 ## Language Java
-RUN apt install -y openjdk-11-jdk
 RUN javac helloworld.java
 
 ## Language Python
-RUN apt install -y python
 
 ## Language Node.js
-RUN apt install -y nodejs
-
 ## Language perl
-RUN apt install -y perl
 
 ## Language php
-RUN apt install -y php-cli
-
 ## Language go
-RUN apt install -y golang-go
-
 ## Language rust
-RUN apt install -y rustc
-RUN rustc helloworld.rs
+RUN rustc helloworld.rs -o helloworld.rso
+
+## Language C#
+RUN dotnet new console --output helloworld
 
 CMD [ "./run.sh"]
