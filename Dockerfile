@@ -16,7 +16,7 @@ RUN apt-get -y update
 RUN apt-get install -y dotnet-sdk-5.0
 
 # Install compilers or interpretors, build source codes
-RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc
+RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic
 
 RUN apt autoremove -y
 
@@ -39,6 +39,7 @@ RUN javac helloworld.java
 ## Language perl
 
 ## Language php
+## Language basic
 ## Language go
 ## Language rust
 RUN rustc helloworld.rs -o helloworld.rso
