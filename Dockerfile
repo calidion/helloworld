@@ -16,7 +16,7 @@ RUN apt-get -y update
 RUN apt-get install -y dotnet-sdk-5.0
 
 # Install compilers or interpretors, build source codes
-RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic
+RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm
 
 RUN apt autoremove -y
 
@@ -25,10 +25,10 @@ WORKDIR /src
 RUN chmod +x /src/run.sh
 
 ## Language C
-RUN gcc -o helloworld01 helloworld.c
+RUN gcc -o helloworld.co helloworld.c
 
 ## Language C++
-RUN g++ -o helloworld02 helloworld.cpp
+RUN g++ -o helloworld.cppo helloworld.cpp
 
 ## Language Java
 RUN javac helloworld.java
@@ -46,5 +46,10 @@ RUN rustc helloworld.rs -o helloworld.rso
 
 ## Language C#
 RUN dotnet new console --output helloworld
+
+## Language Assembly Language
+
+RUN nasm -f elf helloworld.asm
+RUN ld -m elf_i386 -s -o helloworld.asmo helloworld.o
 
 CMD [ "./run.sh"]
