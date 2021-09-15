@@ -1,26 +1,27 @@
 # Hello world potentially for all languages
-Simple “hello world” collections for programming languages
 
-# Build and Run
+Simple “hello world!” collections for programming languages
 
+## Build and Run
 
-## Build
-```
+### Build
+
+```sh
 docker build --rm -f "Dockerfile" -t helloworld:latest "."
 ```
 
-## Run
-```
+### Run
+
+```sh
 docker run --rm -it  helloworld:latest
 ```
 
-## Pull
+### Pull
 
-```
+```sh
 docker pull calidion/helloworld
 ```
 
-# Demo
+## Demo
 
-![](./images/helloworld.gif)
-
+![Demo image](./images/helloworld.gif)
