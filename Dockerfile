@@ -16,7 +16,7 @@ RUN apt-get -y update
 RUN apt-get install -y dotnet-sdk-5.0
 
 # Install compilers or interpretors, build source codes
-RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm groovy ruby-full
+RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm groovy ruby-full gfortran
 
 RUN apt autoremove -y
 
@@ -51,5 +51,8 @@ RUN dotnet new console --output helloworld
 
 RUN nasm -f elf helloworld.asm
 RUN ld -m elf_i386 -s -o helloworld.asmo helloworld.o
+
+## Language Fortran
+RUN gfortran helloworld.for -o helloworld.foro
 
 CMD [ "./run.sh"]
