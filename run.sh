@@ -1,5 +1,14 @@
 #!/bin/bash
 
+print_center(){
+    local x
+    local y
+    text="$*"
+    x=$(( ($(tput cols) - ${#text}) / 2))
+    echo -ne "\E[6n";read -sdR y; y=$(echo -ne "${y#*[}" | cut -d';' -f1)
+    echo -ne "\033[${y};${x}f$*"
+}
+
 RED="\033[31m"
 GREEN="\033[32m"
 YELLOW="\033[33m"
@@ -7,7 +16,7 @@ PURPLE="\033[35m"
 END="\033[m"
 
 function printlang() {
-  echo -e "${GREEN}$1.${PURPLE} The ${RED}$2${PURPLE} Programming language ${END}\n";
+  print_center "${GREEN}$1.${PURPLE} The ${RED}$2${PURPLE} Programming language ${END}\n";
   echo -e "${YELLOW}Source code: ${END}\n";
   cat $3
   echo -e "\n"
@@ -34,4 +43,5 @@ printlang "12" "groovy" "helloworld.groovy" "groovy helloworld.groovy"
 printlang "13" "Ruby" "helloworld.rb" "ruby helloworld.rb"
 printlang "14" "Fortran" "helloworld.for" "./helloworld.foro"
 printlang "15" "R" "helloworld.r" "Rscript helloworld.r"
+printlang "16" "Pascal" "helloworld.pas" "./helloworld.paso"
 printlang "END" "BASIC" "helloworld.bas" "bwbasic helloworld.bas"
