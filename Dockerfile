@@ -17,7 +17,7 @@ RUN apt-get install -y dotnet-sdk-5.0
 
 # Install compilers or interpretors, build source codes
 RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm groovy ruby-full gfortran r-base
-RUN apt install -y fp-compiler gprolog
+RUN apt install -y fp-compiler gprolog sbcl
 RUN apt autoremove -y
 
 COPY . /src
