@@ -1,5 +1,5 @@
 #Download base image ubuntu 18.04
-FROM ubuntu:20.04
+FROM ubuntu:18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -16,8 +16,8 @@ RUN apt-get -y update
 RUN apt-get install -y dotnet-sdk-5.0
 
 # Install compilers or interpretors, build source codes
-RUN apt install -y gcc g++ openjdk-13-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm groovy ruby-full gfortran r-base
-RUN apt install -y fp-compiler
+RUN apt install -y gcc g++ openjdk-11-jdk python nodejs perl php-cli golang-go rustc bwbasic nasm groovy ruby-full gfortran r-base
+RUN apt install -y fp-compiler gprolog
 RUN apt autoremove -y
 
 COPY . /src
@@ -57,5 +57,9 @@ RUN gfortran helloworld.for -o helloworld.foro
 
 ## Language Pascal
 RUN fpc helloworld.pas -ohelloworld.paso
+
+## Language Pascal
+
+RUN gplc helloworld-prolog.pl -o helloworld-prolog.plo
 
 CMD [ "./run.sh"]
